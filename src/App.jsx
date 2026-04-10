@@ -2,7 +2,8 @@ import { useState } from "react";
 import Home from "./pages/Home";
 import Quiz from "./pages/Quiz";
 import Results from "./pages/Results";
-import "./index.css";
+import NavBar from "./components/NavBar";
+import "./App.css";
 
 function App() {
   const [currentPage, setCurrentPage] = useState("home");
@@ -24,6 +25,8 @@ function App() {
 
   return (
     <div>
+      <NavBar />
+
       {currentPage === "home" && <Home onStart={goToQuiz} />}
       {currentPage === "quiz" && <Quiz onFinish={finishQuiz} />}
       {currentPage === "results" && (
