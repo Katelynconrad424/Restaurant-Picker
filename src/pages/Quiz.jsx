@@ -1,5 +1,6 @@
 import { useState } from "react";
 import ProgressBar from "../components/ProgressBar";
+import QuestionCard from "../components/QuestionCard";
 
 function Quiz({ onFinish }) {
   const questions = [
@@ -62,31 +63,14 @@ function Quiz({ onFinish }) {
           totalQuestions={questions.length}
         />
 
-        <h2 className="quiz-question">{questions[currentQuestion].question}</h2>
-
-        <div className="answer-buttons">
-          {questions[currentQuestion].options.map((option) => (
-            <button
-              key={option}
-              className={
-                selectedAnswer === option
-                  ? "answer-button selected"
-                  : "answer-button"
-              }
-              onClick={() => setSelectedAnswer(option)}
-            >
-              {option}
-            </button>
-          ))}
-        </div>
-
-        <button
-          className="next-button"
-          onClick={handleNext}
-          disabled={selectedAnswer === ""}
-        >
-          {currentQuestion === questions.length - 1 ? "See Result" : "Next"}
-        </button>
+        <QuestionCard
+          question={questions[currentQuestion].question}
+          options={questions[currentQuestion].options}
+          selectedAnswer={selectedAnswer}
+          setSelectedAnswer={setSelectedAnswer}
+          handleNext={handleNext}
+          isLastQuestion={currentQuestion === questions.length - 1}
+        />
       </div>
     </div>
   );
