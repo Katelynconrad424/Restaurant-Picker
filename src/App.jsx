@@ -6,24 +6,29 @@ import "./index.css";
 
 function App() {
   const [currentPage, setCurrentPage] = useState("home");
+  const [answers, setAnswers] = useState({});
 
   function goToQuiz() {
     setCurrentPage("quiz");
   }
 
-  function goToResults() {
+  function finishQuiz(userAnswers) {
+    setAnswers(userAnswers);
     setCurrentPage("results");
   }
 
   function goHome() {
     setCurrentPage("home");
+    setAnswers({});
   }
 
   return (
     <div>
       {currentPage === "home" && <Home onStart={goToQuiz} />}
-      {currentPage === "quiz" && <Quiz onFinish={goToResults} />}
-      {currentPage === "results" && <Results onRestart={goHome} />}
+      {currentPage === "quiz" && <Quiz onFinish={finishQuiz} />}
+      {currentPage === "results" && (
+        <Results answers={answers} onRestart={goHome} />
+      )}
     </div>
   );
 }
