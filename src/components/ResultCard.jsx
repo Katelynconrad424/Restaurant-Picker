@@ -13,6 +13,12 @@ function ResultCard({
         <>
           <h2 className="restaurant-name">{bestMatch.name}</h2>
 
+          <img
+            src={bestMatch.image}
+            alt={bestMatch.name}
+            className="restaurant-image"
+          />
+
           <p className="results-text">
             We picked this for you because it matches your preference for{" "}
             <strong>{matchDetails.join(", ")}</strong>.
