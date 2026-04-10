@@ -9,7 +9,7 @@ function Results({ answers, onRestart }) {
     let score = 0;
 
     if (currentRestaurant.cuisine === answers.cuisine) {
-      score = score + 1;
+      score = score + 3;
     }
 
     if (currentRestaurant.price === answers.price) {
