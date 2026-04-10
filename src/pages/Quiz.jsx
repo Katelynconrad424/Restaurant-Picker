@@ -78,7 +78,11 @@ function Quiz({ onFinish }) {
           ))}
         </div>
 
-        <button className="next-button" onClick={handleNext}>
+        <button
+          className="next-button"
+          onClick={handleNext}
+          disabled={selectedAnswer === ""}
+        >
           {currentQuestion === questions.length - 1 ? "See Result" : "Next"}
         </button>
       </div>
