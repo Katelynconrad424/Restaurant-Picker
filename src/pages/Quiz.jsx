@@ -1,4 +1,5 @@
 import { useState } from "react";
+import ProgressBar from "../components/ProgressBar";
 
 function Quiz({ onFinish }) {
   const questions = [
@@ -56,9 +57,10 @@ function Quiz({ onFinish }) {
   return (
     <div className="quiz-page">
       <div className="quiz-card">
-        <p className="question-count">
-          Question {currentQuestion + 1} of {questions.length}
-        </p>
+        <ProgressBar
+          currentQuestion={currentQuestion}
+          totalQuestions={questions.length}
+        />
 
         <h2 className="quiz-question">{questions[currentQuestion].question}</h2>
 
